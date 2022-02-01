@@ -4,40 +4,20 @@ import {
   StyleSheet,
   Text,
   StatusBar,
-  View,
   FlatList,
 } from "react-native";
-import { Button, Card, Paragraph } from "react-native-paper";
-import ContentLoader, {
-  Circle,
-  Facebook,
-  Rect,
-} from "react-content-loader/native";
+import { Button } from "react-native-paper";
+import ContentLoader, { Circle, Rect } from "react-content-loader/native";
 
-// import { data } from "../../api/data";
+import { StarshipCard } from "../components/StarshipCard";
 import { useStarships } from "../hooks/useStarships";
 
-const App = () => {
-  const renderItem = ({ item }: any) => (
-    <Card mode="elevated" style={styles.card}>
-      <Card.Title title={item.name} />
-      <Card.Content>
-        <Paragraph>Model: {item.model}</Paragraph>
-        <Paragraph>Crew: {item.crew}</Paragraph>
-        <Paragraph>Hyperdrive Rating: {item.hyperdrive_rating}</Paragraph>
-        <Paragraph>Cost in Credits: {item.cost_in_credits}</Paragraph>
-      </Card.Content>
-      <Card.Actions>
-        <Button mode="contained" style={styles.button}>
-          Buy this
-        </Button>
-      </Card.Actions>
-    </Card>
-  );
+const FeedScript = () => {
+  const renderItem = ({ item }: any) => <StarshipCard {...item} />;
 
-  const { isLoading, isError, data } = useStarships();
+  const { isLoading, isError, data, refetch } = useStarships();
 
-  if (isLoading) {
+  if (!isLoading) {
     return (
       <ContentLoader viewBox="0 0 380 70">
         <Circle cx="30" cy="30" r="30" />
@@ -47,7 +27,14 @@ const App = () => {
     );
   }
   if (isError) {
-    return <Text>Error!</Text>;
+    return (
+      <SafeAreaView style={styles.safeContainer}>
+        <Text>Error!</Text>
+        <Button mode="contained" onPress={() => refetch()}>
+          Retry
+        </Button>
+      </SafeAreaView>
+    );
   }
 
   return (
@@ -65,17 +52,8 @@ const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    padding: 20,
-  },
-  card: {
-    margin: 10,
-    padding: 5,
-    borderRadius: 5,
-    backgroundColor: "#fff",
-  },
-  button: {
-    marginTop: 10,
+    paddingVertical: 20,
   },
 });
 
-export default App;
+export default FeedScript;
