@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-export default function App() {
+import FeedScript from "./src/screens/FeedScript";
+import LoginScreen from "./src/screens/LoginScreen";
+
+const App = () => {
+  const queryClient = new QueryClient();
+  //   return <LoginScreen />;
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <FeedScript />
+    </QueryClientProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
