@@ -11,3 +11,7 @@ Run the following command to install the app:
 
 Start the app by running the following command:
 `expo start`
+
+## Expo link
+
+https://expo.dev/@ftloic/minecraft-checker

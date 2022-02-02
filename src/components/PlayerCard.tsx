@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { Card, List, Paragraph, Title } from "react-native-paper";
+import { Card, List, Paragraph } from "react-native-paper";
 
 interface PlayerCardProps {
   meta: any;
