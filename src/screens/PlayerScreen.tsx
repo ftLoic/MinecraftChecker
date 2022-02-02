@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { ActivityIndicator, Title } from "react-native-paper";
 
 import { usePlayers } from "../hooks/usePlayer";
@@ -12,9 +12,7 @@ type Props = {
 };
 
 const PlayerScreen = ({ route, navigation }: Props) => {
-  const { isLoading, isError, data, refetch } = usePlayers(
-    route.params.username
-  );
+  const { isLoading, isError, data, refetch } = usePlayers(route.params.name);
 
   if (isLoading) {
     return (
@@ -47,13 +45,5 @@ const PlayerScreen = ({ route, navigation }: Props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-});
 
 export default PlayerScreen;

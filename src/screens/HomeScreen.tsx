@@ -12,9 +12,13 @@ type Props = {
 
 const HomeScreen = ({ route, navigation }: Props) => {
   const [username, setUsername] = React.useState("");
-  const searchUser = () => {
-    console.log(username, route, Routes.PLAYER_SCREEN);
-    navigation.navigate(Routes.PLAYER_SCREEN, { username });
+  const [searchHistory, setSearchHistory] = React.useState([]);
+
+  const searchUser = (name: string) => {
+    setSearchHistory(searchHistory.concat(name));
+
+    console.log(name, route, Routes.PLAYER_SCREEN);
+    navigation.navigate(Routes.PLAYER_SCREEN, { name });
   };
 
   return (
@@ -29,12 +33,16 @@ const HomeScreen = ({ route, navigation }: Props) => {
           label="Username"
           autoComplete="off"
         />
-        <Button mode="contained" onPress={searchUser}>
+        <Button mode="contained" onPress={() => searchUser(username)}>
           Search
         </Button>
       </View>
       <View style={{ backgroundColor: "#fafafa", padding: 32 }}>
         <Title style={styles.title}>Last searched players</Title>
+        {searchHistory.map((name) => (
+          <Button>{name}</Button>
+        ))}
+        <Button mode="contained">Reset list</Button>
       </View>
     </View>
   );
