@@ -40,7 +40,7 @@ const HomeScreen = ({ route, navigation }: Props) => {
       <View style={{ backgroundColor: "#fafafa", padding: 32 }}>
         <Title style={styles.title}>Last searched players</Title>
         {searchHistory.map((name) => (
-          <Button>{name}</Button>
+          <Button onPress={() => searchUser(name)}>{name}</Button>
         ))}
         <Button mode="contained" onPress={() => setSearchHistory([])}>
           Reset list

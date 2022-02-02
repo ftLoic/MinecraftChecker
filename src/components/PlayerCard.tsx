@@ -20,25 +20,17 @@ const PlayerCard = ({ username, id, avatar }: PlayerCardProps) => {
       <Card.Content>
         <Paragraph>UID: {id}</Paragraph>
       </Card.Content>
-      <Card.Actions>
-        <Button mode="contained" style={styles.button}>
-          Add in favorites
-        </Button>
-      </Card.Actions>
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    marginHorizontal: 30,
-    marginVertical: 15,
+    marginTop: 20,
+    maxWidth: 200,
     padding: 5,
     borderRadius: 5,
     backgroundColor: "#fff",
-  },
-  button: {
-    marginTop: 10,
   },
 });
 

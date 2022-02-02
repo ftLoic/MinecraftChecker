@@ -40,6 +40,7 @@ const PlayerScreen = ({ route, navigation }: Props) => {
     <View>
       <Header />
       <View style={{ padding: 32 }}>
+        <Title>A player was found!</Title>
         <PlayerCard {...data.data.player} />
       </View>
     </View>
