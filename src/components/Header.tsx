@@ -1,23 +1,17 @@
-import { StyleSheet, Text } from 'react-native';
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { Appbar } from "react-native-paper";
 
-const Header = (props) => {
+export const Header = () => {
+  const navigation = useNavigation();
+  const { name } = useRoute();
+
   return (
-    <Text
-    style={styles.header}
-    {...props}
-    />
+    <Appbar.Header>
+      <Appbar.BackAction
+        style={{ display: navigation.canGoBack() ? "flex" : "none" }}
+        onPress={() => navigation.goBack()}
+      />
+      <Appbar.Content title={name} />
+    </Appbar.Header>
   );
-}
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#a31d7f',
-    color: 'white',
-    paddingVertical: '30%',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-});
-
-export default Header;
+};

@@ -2,40 +2,32 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Button, Card, Paragraph } from "react-native-paper";
 
-interface StarshipCardProps {
-  name: string;
-  model: string;
-  manufacturer: string;
-  cost_in_credits: string;
+interface PlayerCardProps {
+  username: string;
+  id: string;
+  avatar: string;
 }
 
-export function StarshipCard({
-  name,
-  model,
-  manufacturer,
-  cost_in_credits,
-}: StarshipCardProps) {
+const PlayerCard = ({ username, id, avatar }: PlayerCardProps) => {
   return (
     <Card mode="elevated" style={styles.card}>
       <Card.Cover
         source={{
-          uri: "https://inteng-storage.s3.amazonaws.com/img/iea/BxG2d8lJw9/sizes/porsche-lucasfilm-starship-ie_md.jpg",
+          uri: avatar,
         }}
       />
-      <Card.Title title={name} />
+      <Card.Title title={username} />
       <Card.Content>
-        <Paragraph>Model: {model}</Paragraph>
-        <Paragraph>Manufacturer: {manufacturer}</Paragraph>
-        <Paragraph>Cost in Credits: {cost_in_credits}</Paragraph>
+        <Paragraph>UID: {id}</Paragraph>
       </Card.Content>
       <Card.Actions>
         <Button mode="contained" style={styles.button}>
-          Buy this
+          Add in favorites
         </Button>
       </Card.Actions>
     </Card>
   );
-}
+};
 
 const styles = StyleSheet.create({
   card: {
@@ -49,3 +41,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
+export default PlayerCard;

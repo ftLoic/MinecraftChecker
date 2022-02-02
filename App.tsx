@@ -1,15 +1,14 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import FeedScript from "./src/screens/FeedScript";
-import LoginScreen from "./src/screens/LoginScreen";
+import { Navigator } from "./src/navigation/Navigator";
+import HomeScreen from "./src/screens/HomeScreen";
 
 const App = () => {
   const queryClient = new QueryClient();
-  //   return <LoginScreen />;
   return (
     <QueryClientProvider client={queryClient}>
-      <FeedScript />
+      <Navigator />
     </QueryClientProvider>
   );
 };
