@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Button, TextInput, Title } from "react-native-paper";
 
 import { Routes } from "../navigation/Routes";
@@ -15,14 +15,16 @@ const HomeScreen = ({ route, navigation }: Props) => {
   const [searchHistory, setSearchHistory] = React.useState([]);
 
   const searchUser = (name: string) => {
-    setSearchHistory(searchHistory.concat(name));
+    if (searchHistory.indexOf(name) === -1) {
+      setSearchHistory(searchHistory.concat(name));
+    }
 
     console.log(name, route, Routes.PLAYER_SCREEN);
     navigation.navigate(Routes.PLAYER_SCREEN, { name });
   };
 
   return (
-    <View>
+    <ScrollView>
       <Header />
       <View style={{ padding: 32, backgroundColor: "#fafafa" }}>
         <Title style={styles.title}>Search for a player</Title>
@@ -46,7 +48,7 @@ const HomeScreen = ({ route, navigation }: Props) => {
           Reset list
         </Button>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

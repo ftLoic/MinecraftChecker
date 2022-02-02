@@ -6,7 +6,6 @@ import HomeScreen from "../screens/HomeScreen";
 import PlayerScreen from "../screens/PlayerScreen";
 
 import { Routes } from "./Routes";
-import { Header } from "../components/Header";
 
 const Stack = createNativeStackNavigator();
 

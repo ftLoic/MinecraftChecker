@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { Text, ScrollView, View, StatusBar } from "react-native";
 import { ActivityIndicator, Title } from "react-native-paper";
 
 import { usePlayers } from "../hooks/usePlayer";
@@ -8,11 +8,10 @@ import PlayerCard from "../components/PlayerCard";
 
 type Props = {
   route: any;
-  navigation: any;
 };
 
-const PlayerScreen = ({ route, navigation }: Props) => {
-  const { isLoading, isError, data, refetch } = usePlayers(route.params.name);
+const PlayerScreen = ({ route }: Props) => {
+  const { isLoading, isError, data } = usePlayers(route.params.name);
 
   if (isLoading) {
     return (
@@ -39,10 +38,10 @@ const PlayerScreen = ({ route, navigation }: Props) => {
   return (
     <View>
       <Header />
-      <View style={{ padding: 32 }}>
+      <ScrollView style={{ padding: 32 }}>
         <Title>A player was found!</Title>
         <PlayerCard {...data.data.player} />
-      </View>
+      </ScrollView>
     </View>
   );
 };
