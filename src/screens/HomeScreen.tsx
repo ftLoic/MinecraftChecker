@@ -42,7 +42,9 @@ const HomeScreen = ({ route, navigation }: Props) => {
         {searchHistory.map((name) => (
           <Button>{name}</Button>
         ))}
-        <Button mode="contained">Reset list</Button>
+        <Button mode="contained" onPress={() => setSearchHistory([])}>
+          Reset list
+        </Button>
       </View>
     </View>
   );
