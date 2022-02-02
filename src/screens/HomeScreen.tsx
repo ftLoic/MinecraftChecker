@@ -24,7 +24,7 @@ const HomeScreen = ({ route, navigation }: Props) => {
   return (
     <View>
       <Header />
-      <View style={{ padding: 32 }}>
+      <View style={{ padding: 32, backgroundColor: "#fafafa" }}>
         <Title style={styles.title}>Search for a player</Title>
         <TextInput
           mode="outlined"
@@ -37,7 +37,7 @@ const HomeScreen = ({ route, navigation }: Props) => {
           Search
         </Button>
       </View>
-      <View style={{ backgroundColor: "#fafafa", padding: 32 }}>
+      <View style={{ padding: 32 }}>
         <Title style={styles.title}>Last searched players</Title>
         {searchHistory.map((name) => (
           <Button onPress={() => searchUser(name)}>{name}</Button>
