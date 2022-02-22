@@ -18,8 +18,7 @@ const HomeScreen = ({ route, navigation }: Props) => {
     if (searchHistory.indexOf(name) === -1) {
       setSearchHistory(searchHistory.concat(name));
     }
-
-    console.log(name, route, Routes.PLAYER_SCREEN);
+    
     navigation.navigate(Routes.PLAYER_SCREEN, { name });
   };
 
